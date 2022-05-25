@@ -7,7 +7,7 @@ namespace Unity3DMiniGames
 {
     public class BouncySurface : MonoBehaviour
     {
-        [SerializeField] float _bounceStrength, _decelerateStrength;
+        [SerializeField] float _bounceStrength;
         
         private void OnCollisionEnter(Collision col)
         {
@@ -15,8 +15,8 @@ namespace Unity3DMiniGames
             if (ballMov != null)
             {
                 Vector3 normal = col.GetContact(0).normal;
-                if (ballMov.m_ballSpeed <= 100f) ballMov.AddForce(-normal * _bounceStrength);
-                else if (ballMov.m_ballSpeed > 100f) ballMov.AddForce(-normal * _decelerateStrength);
+                ballMov.AddForce(-normal * _bounceStrength);
+                Debug.Log("Golpea el Muro");
             }
         }
     }
