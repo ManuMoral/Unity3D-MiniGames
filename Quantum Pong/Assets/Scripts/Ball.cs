@@ -13,6 +13,7 @@ namespace Unity3DMiniGames
         public float m_ballSpeed;
         [SerializeField] float _velocityMultiplier;
         [SerializeField] MatchManager _matchM;
+        float _x, _y;
 
         private void Awake()
         {
@@ -24,10 +25,22 @@ namespace Unity3DMiniGames
         {
             if (_matchM.m_gameState == 1)
             {
-                float x = Random.value < .5f ? -1f : 1f;
-                float y = Random.value < .5f ? Random.Range(-1f, -.5f) : Random.Range(.5f, 1f);
+                if (_matchM.m_p1ScoredGoal)
+                {
+                    _x = -1f;
+                }
+                else if (_matchM.m_p2ScoredGoal)
+                {
+                    _x = 1f;
+                }
+                else
+                {
+                    _x = Random.value < .5f ? -1f : 1f;
+                }
+                
+                _y = Random.value < .5f ? Random.Range(-1f, -.5f) : Random.Range(.5f, 1f);
 
-                Vector3 dir = new(x, y, 0f);
+                Vector3 dir = new(_x, _y, 0f);
                 _ballRb.AddForce(dir * m_ballSpeed);
             }
             

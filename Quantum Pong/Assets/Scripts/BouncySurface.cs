@@ -16,7 +16,6 @@ namespace Unity3DMiniGames
             {
                 Vector3 normal = col.GetContact(0).normal;
                 ballMov.AddForce(-normal * _bounceStrength);
-                Debug.Log("Golpea el Muro");
             }
         }
     }
