@@ -121,6 +121,7 @@ namespace Unity3DMiniGames
 
         public void ReturnMenu()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(0);
         }
 

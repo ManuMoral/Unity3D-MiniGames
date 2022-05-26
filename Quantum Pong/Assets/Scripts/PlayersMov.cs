@@ -9,7 +9,7 @@ namespace Unity3DMiniGames
 {
     public class PlayersMov : MonoBehaviour
     {
-        Rigidbody _rb;
+        protected Rigidbody _rb;
 
         private void Awake()
         {

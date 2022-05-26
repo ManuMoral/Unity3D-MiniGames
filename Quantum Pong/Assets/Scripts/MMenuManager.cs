@@ -16,7 +16,7 @@ namespace Unity3DMiniGames
 
         public void PlayVsCPU()
         {
-            //Load VsCPU Scene
+            SceneManager.LoadScene(2);
         }
 
         public void Play4Players()
