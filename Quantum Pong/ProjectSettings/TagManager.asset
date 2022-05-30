@@ -8,6 +8,14 @@ TagManager:
   - Ball
   - GoalP1
   - GoalP2
+  - PlayerSpeed
+  - BallSpeed
+  - PlayerSize
+  - BallSize
+  - PaddleOne
+  - PaddleTwo
+  - PaddleThree
+  - PaddleFour
   layers:
   - Default
   - TransparentFX
@@ -44,4 +52,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2967575801
     locked: 0

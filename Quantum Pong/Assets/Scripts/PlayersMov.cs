@@ -1,8 +1,6 @@
 //Exercise 4: Quantum Pong
 //Editor: Manu Moral
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Unity3DMiniGames
@@ -10,6 +8,8 @@ namespace Unity3DMiniGames
     public class PlayersMov : MonoBehaviour
     {
         protected Rigidbody _rb;
+        public bool m_isAI;
+        [HideInInspector] public float m_currentSpeed, m_currentYBound;
 
         private void Awake()
         {
