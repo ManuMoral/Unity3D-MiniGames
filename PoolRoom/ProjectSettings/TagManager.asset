@@ -7,6 +7,8 @@ TagManager:
   - Dartboard
   - Wall
   - Dart
+  - Sphere1
+  - BowlingPack
   layers:
   - Default
   - TransparentFX
