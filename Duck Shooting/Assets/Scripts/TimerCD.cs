@@ -1,4 +1,4 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
 using System.Collections;
@@ -38,16 +38,16 @@ namespace Unity3DMiniGames
 
             if (_totalTime == 0)
             {
-                StartCoroutine(WaitToLoadEndScene());
+                StartCoroutine(TimeToLoadScene());
                 m_isGameOver = true;
                 _timeOutDisplay.SetActive(true);
                 GameManager.Instance.m_playPause = true;
             }
         }
 
-        IEnumerator WaitToLoadEndScene()
+        IEnumerator TimeToLoadScene()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(3f);
             GameManager.Instance.LoadEndGameScene();
         }
     }

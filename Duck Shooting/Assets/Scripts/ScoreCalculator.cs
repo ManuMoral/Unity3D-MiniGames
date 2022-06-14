@@ -1,4 +1,4 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
 using UnityEngine;
@@ -20,7 +20,7 @@ namespace Unity3DMiniGames
 
         private void Update()
         {
-            //States of Difficculty
+            //Difficulty levels:
             if (m_currentScore > 10 && m_currentScore <= 20)
             {
                 m_diffState = 1;

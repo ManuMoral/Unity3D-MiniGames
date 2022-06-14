@@ -1,10 +1,7 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace Unity3DMiniGames
 {

@@ -1,4 +1,4 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
 using System.Collections;
@@ -11,7 +11,7 @@ namespace Unity3DMiniGames
         Rigidbody _bulletRb;
         AudioSource _bulletSound;
         [SerializeField] float _speed, _yDir;
-        [SerializeField] bool _isMoving, _shoot;
+        [SerializeField] bool _isMoving, _isShooting;
         [SerializeField] Transform _gunPos;
         public float m_xDir;
 
@@ -27,25 +27,22 @@ namespace Unity3DMiniGames
             {
                 if (Input.GetKeyDown(KeyCode.Space) && !_isMoving)
                 {
-                    _shoot = true;
+                    _isShooting = true;
                     _isMoving = true;
                     _bulletSound.Play();
-                    StartCoroutine(ResetBullet());
+                    StartCoroutine(TimeToReloadBullet());
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                BulletReload();
-            }
+            if (Input.GetKeyDown(KeyCode.R)) BulletReload();
         }
 
         private void FixedUpdate()
         {
-            if (_shoot)
+            if (_isShooting)
             {
                 AddStartingForce();
-                _shoot = false;
+                _isShooting = false;
             }
         }
 
@@ -54,7 +51,7 @@ namespace Unity3DMiniGames
             _bulletRb.AddForce(_speed * new Vector3(m_xDir, _yDir, 1), ForceMode.Impulse);
         }
 
-        IEnumerator ResetBullet()
+        IEnumerator TimeToReloadBullet()
         {
             yield return new WaitForSeconds(1f);
             BulletReload();

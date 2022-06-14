@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VsIAGamePlay.unity
     guid: cb7bed087ba7cc74fa9d6d928308e0c7
+  - enabled: 1
+    path: Assets/Scenes/VsOther3AIGP.unity
+    guid: 03c655f39c9544244a09cd350a270c4a
   m_configObjects: {}

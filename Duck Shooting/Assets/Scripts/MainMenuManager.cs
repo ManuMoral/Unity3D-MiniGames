@@ -1,4 +1,4 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
 using UnityEngine;

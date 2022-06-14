@@ -16,6 +16,8 @@ TagManager:
   - PaddleTwo
   - PaddleThree
   - PaddleFour
+  - GoalP3
+  - GoalP4
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,4 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
 using UnityEngine;
@@ -19,10 +19,7 @@ namespace Unity3DMiniGames
 
         void Update()
         {
-            if (transform.position.x >= _reSpawnPoint)
-            {
-                _isMoving = false;
-            }
+            if (transform.position.x >= _reSpawnPoint) _isMoving = false;
 
             if (!_isMoving)
             {

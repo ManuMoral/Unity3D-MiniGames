@@ -1,4 +1,4 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
 using UnityEngine;
@@ -10,7 +10,6 @@ namespace Unity3DMiniGames
         [SerializeField] float _gunSpeed, _YRot, _bRot;
         [SerializeField] Vector3 _horizontalMov;
         [SerializeField] Bullet _bullet;
-        float _currentYRot;
 
         void Update()
         {

@@ -1,4 +1,4 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
 using UnityEngine;
@@ -11,7 +11,7 @@ namespace Unity3DMiniGames
         public int m_newScore;
         public bool m_playPause;
 
-        //Singleton:
+        //Singleton structure:
         private static GameManager instance;
         public static GameManager Instance { get { return instance; } }
 
@@ -19,14 +19,9 @@ namespace Unity3DMiniGames
 
         private void Awake()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            //Singleton structure:
+            if (instance == null) instance = this;
+            else Destroy(gameObject);
             DontDestroyOnLoad(this);
 
             m_playPause = false;

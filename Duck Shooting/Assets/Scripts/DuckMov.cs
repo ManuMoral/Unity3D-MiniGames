@@ -1,4 +1,4 @@
-//Exercise 3: Duck Shooting
+//Practice 3: Duck Shooting
 //Editor: Manu Moral
 
 using System.Collections;
@@ -56,7 +56,7 @@ namespace Unity3DMiniGames
                 transform.Translate(_speed * Time.deltaTime * Vector3.forward);
             }
 
-            //Increase Speed in Ducks
+            //Increase the speed of the ducks (Difficulty Status):
             if (_isDuck || _isSuperDuck)
             {
                 if (_scoreCal.m_diffState == 1 && !_onDiff1)
@@ -101,31 +101,19 @@ namespace Unity3DMiniGames
             {
                 if (_isDuck)
                 {
-                    transform.Translate(_speed * Time.deltaTime * new Vector3(0, 3f, 0));
-                    _redMesh.enabled = true;
-                    _duckMesh.enabled = false;
-                    StartCoroutine(ReturnDefaultColor());
-                    _duckSound.Play();
+                    ShockTheDuck();
                     _scoreCal.KillDuck();
                 }
 
                 if (_isVampiDuck)
                 {
-                    transform.Translate(_speed * Time.deltaTime * new Vector3(0, 3f, 0));
-                    _redMesh.enabled = true;
-                    _duckMesh.enabled = false;
-                    StartCoroutine(ReturnDefaultColor());
-                    _duckSound.Play();
+                    ShockTheDuck();
                     _scoreCal.KillVampiDuck();
                 }
 
                 if (_isSuperDuck)
                 {
-                    transform.Translate(_speed * Time.deltaTime * new Vector3(0, 3f, 0));
-                    _redMesh.enabled = true;
-                    _duckMesh.enabled = false;
-                    StartCoroutine(ReturnDefaultColor());
-                    _duckSound.Play();
+                    ShockTheDuck();
                     _scoreCal.KillSuperDuck();
                 }
 
@@ -137,6 +125,15 @@ namespace Unity3DMiniGames
                 
                 StartCoroutine(RestartDuck());
             }
+        }
+
+        void ShockTheDuck()
+        {
+            transform.Translate(_speed * Time.deltaTime * new Vector3(0, 3f, 0));
+            _redMesh.enabled = true;
+            _duckMesh.enabled = false;
+            StartCoroutine(ReturnDefaultColor());
+            _duckSound.Play();
         }
 
         // We reposition the duck in the start spawn:
