@@ -36,6 +36,11 @@ public class PlayerPhysics : MonoBehaviour
             toriCount++;
             _toriCount.text = toriCount.ToString();
         }
+        else if (other.CompareTag("DoubleTori"))
+        {
+            toriCount += 2;
+            _toriCount.text = toriCount.ToString();
+        }
     }
 
     private void OnCollisionEnter(Collision col)
