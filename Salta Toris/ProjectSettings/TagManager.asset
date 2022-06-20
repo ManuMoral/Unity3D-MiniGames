@@ -7,6 +7,7 @@ TagManager:
   - Tori
   - Floor
   - DoubleTori
+  - Destructible
   layers:
   - Default
   - TransparentFX

@@ -38,6 +38,7 @@ public class PlayerMove : MonoBehaviour
             _thirdCamALis.enabled = false;
             _cenitalCam.enabled = false;
             _cenitalCamALis.enabled = false;
+            _bodyPlayer.gameObject.GetComponent<Transform>().localPosition = Vector3.zero;
         }
         if (Input.GetMouseButtonDown(1)) //Right Button
         {
@@ -47,6 +48,7 @@ public class PlayerMove : MonoBehaviour
             _cenitalCamALis.enabled = true;
             _thirdPCam.enabled = false;
             _thirdCamALis.enabled = false;
+            _bodyPlayer.gameObject.GetComponent<Transform>().localPosition = Vector3.zero;
         }
         if (Input.GetMouseButtonDown(0)) //Left Button
         {
@@ -56,6 +58,7 @@ public class PlayerMove : MonoBehaviour
             _cenitalCamALis.enabled = false;
             _thirdPCam.enabled = true;
             _thirdCamALis.enabled = true;
+            _bodyPlayer.gameObject.GetComponent<Transform>().localPosition = Vector3.zero;
         }
 
     }
