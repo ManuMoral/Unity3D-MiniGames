@@ -7,13 +7,14 @@ public class PlayerMove : MonoBehaviour
 {
 
     [SerializeField] Transform _playerCam;
-    [SerializeField] Camera _firstPCam, _thirdPCam, _cenitalCam;
-    [SerializeField] AudioListener _firstCamALis, _thirdCamALis, _cenitalCamALis;
-    [SerializeField] float _speed;
+    [SerializeField] GameObject _firstPCamGun, _thirdPCamGun;
+    [SerializeField] Camera _firstPCam, _thirdPCam;
+    [SerializeField] AudioListener _firstCamALis, _thirdCamALis;
+    [SerializeField] float _speed, _runSpeed;
     
     [SerializeField] Rigidbody _bodyPlayer;
-    float moveX, moveZ, mouseX, mouseY, sensitivity = 2;
-    
+    float startSpeed, moveX, moveZ, mouseX, mouseY, sensitivity = 2;
+    [HideInInspector] public bool m_isOnFPCam;
 
     private void Start()
     {
@@ -21,45 +22,61 @@ public class PlayerMove : MonoBehaviour
         _firstCamALis.enabled = true;
         _thirdPCam.enabled = false;
         _thirdCamALis.enabled = false;
-        _cenitalCam.enabled = false;
-        _cenitalCamALis.enabled = false;
+        _thirdPCamGun.SetActive(false);
+        m_isOnFPCam = true;
+        startSpeed = _speed;
     }
 
     void Update()
     {
         ViewRotations();
         CharacterMovement();
-        
-        if (Input.GetMouseButtonDown(2)) //Center Button
+        RunSpeed();
+        ChangeCamMode();
+        ShowGun();
+    }
+
+    void RunSpeed()
+    {
+        if (Input.GetMouseButton(2))
         {
-            _firstPCam.enabled = true;
-            _firstCamALis.enabled = true;
-            _thirdPCam.enabled = false;
-            _thirdCamALis.enabled = false;
-            _cenitalCam.enabled = false;
-            _cenitalCamALis.enabled = false;
-            _bodyPlayer.gameObject.GetComponent<Transform>().localPosition = Vector3.zero;
+            _speed = _runSpeed;
         }
+        else
+        {
+            _speed = startSpeed;
+        }
+    }
+
+    private void ChangeCamMode()
+    {
+ 
         if (Input.GetMouseButtonDown(1)) //Right Button
         {
-            _firstPCam.enabled = false;
-            _firstCamALis.enabled = false;
-            _cenitalCam.enabled = true;
-            _cenitalCamALis.enabled = true;
-            _thirdPCam.enabled = false;
-            _thirdCamALis.enabled = false;
+
+            _firstPCam.enabled = !_firstPCam.enabled;
+            _firstCamALis.enabled = !_firstCamALis.enabled;
+            _thirdPCam.enabled = !_thirdPCam.enabled;
+            _thirdCamALis.enabled = !_thirdCamALis.enabled;
+
+            m_isOnFPCam = !m_isOnFPCam;
             _bodyPlayer.gameObject.GetComponent<Transform>().localPosition = Vector3.zero;
         }
-        if (Input.GetMouseButtonDown(0)) //Left Button
+    }
+
+    void ShowGun()
+    {
+        if (m_isOnFPCam)
         {
-            _firstPCam.enabled = false;
-            _firstCamALis.enabled = false;
-            _cenitalCam.enabled = false;
-            _cenitalCamALis.enabled = false;
-            _thirdPCam.enabled = true;
-            _thirdCamALis.enabled = true;
-            _bodyPlayer.gameObject.GetComponent<Transform>().localPosition = Vector3.zero;
+            _firstPCamGun.SetActive(true);
+            _thirdPCamGun.SetActive(false);
         }
+        else
+        {
+            _firstPCamGun.SetActive(false);
+            _thirdPCamGun.SetActive(true);
+        }
+        
 
     }
 
@@ -79,6 +96,7 @@ public class PlayerMove : MonoBehaviour
         transform.localEulerAngles = new Vector3(0, mouseX, 0);
 
         _playerCam.localEulerAngles = new Vector3(-mouseY, 0, 0);
+
     }
 
 }

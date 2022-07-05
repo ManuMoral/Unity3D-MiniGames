@@ -1,5 +1,6 @@
 //Game: The Cave Of The Last Dragon
 //Genre: Conversational Adventure
+//GamePlay Language: Spanish
 //Editor: Manu Moral
 
 using UnityEngine;
@@ -71,6 +72,9 @@ namespace UnityMiniGames
 
             _textScreen.text = "> Bienvenido a la Gruta del Último Dragón,\n" +
                 "una intrincada sima que esconde valiosos tesoros y letales amenazas.\n" + "\n" +
+                "Mi nombre es Kaelius y soy el Guardián (o lo que queda de él) protector de la entrada a esta Gruta Ancestral. \n" +
+                "No me malinterpretes, no estoy aquí para proteger las riquezas de este lugar, más bien advierto a los pusilánimes viajeros " +
+                "de una horrible muerte prematura... Mmm tienes cara de querer tentar a la suerte, podría acompañarte... \n" + "\n" +
                 "¿Te atreves a explorar?\n" + "Si es así, di tu nombre y demuestra tu valía.";
 
             _helpTips = "Escribe aquí tu Nombre para comenzar la partida." +
@@ -121,7 +125,7 @@ namespace UnityMiniGames
 
         void CleanInstructions()
         {
-            
+            //TODO: hacer que el campo de inputs se borre tras pulsar Enter
         }
 
         void CleanInstructionsTips()
@@ -261,8 +265,8 @@ namespace UnityMiniGames
                     if (_firstTime)
                     {
                         _currentRoomDesc = "> Valiente " + _name + " has atravesado la entrada de la Gruta que da a un angosto pasillo," +
-                        " una gran roca cae tras de ti obstruyendo la entrada y posible escapatoria...\n " +
-                        "Una vez que se disipa el polvo, apenas puedes ver las paredes, tímidamente alumbradas por un par de Antorchas.\n" +
+                        " una gran roca cae tras de ti obstruyendo la entrada y posible escapatoria...\n" + "\n" +
+                        "Una vez que se disipa el polvo, apenas puedes ver las paredes, tímidamente alumbradas por un par de Antorchas.\n" + "\n" +
                         "Distingues unos grabados con forma de Dragón en los muros, que apuntan a tres posibles salidas...\n" +
                         "¿Que decides hacer?";
                     }

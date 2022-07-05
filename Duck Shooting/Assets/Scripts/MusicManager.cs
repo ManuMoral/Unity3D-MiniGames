@@ -2,12 +2,15 @@
 //Editor: Manu Moral
 
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Unity3DMiniGames
 {
     public class MusicManager : MonoBehaviour
     {
         AudioSource _music;
+        [SerializeField] Image _muteBtn;
+        [SerializeField] Sprite[] _duckIcons;
         
         void Start()
         {
@@ -16,8 +19,14 @@ namespace Unity3DMiniGames
 
         public void MuteMusic()
         {
-            if(_music.mute) _music.mute = false;
-            else _music.mute = true;
+            _music.mute = !_music.mute;
+            SwitchMuteBtn();
+        }
+
+        void SwitchMuteBtn()
+        {
+            if (_music.mute) _muteBtn.sprite = _duckIcons[0];
+            else _muteBtn.sprite = _duckIcons[1];
         }
     }
 }

@@ -30,9 +30,24 @@ namespace Unity3DMiniGames
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            CursorProp();
+        }
+
+        private void CursorProp()
+        {
+
+            if (SceneManager.GetActiveScene().buildIndex == 2)
             {
-                _cursorCuack.Play();
+                Cursor.visible = false;               
+            }
+            else
+            {
+                Cursor.visible = true;
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    _cursorCuack.Play();
+                }
             }
         }
 
@@ -53,17 +68,17 @@ namespace Unity3DMiniGames
 
         public void LoadMainMenuScene()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         public void LoadGamePlayScene()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
         public void LoadEndGameScene()
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 }

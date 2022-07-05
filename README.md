@@ -1,5 +1,5 @@
 
 # Unity3D-MiniGames
-Set of Exercises to develop simple games in Unity 3D.
+Set of practical exercises to develop simple games in Unity 3D.
 
-Lastest playable versions available on [Itch.io](https://kreative-knowmad.itch.io/) 
+Latest playable versions available soon on [Itch.io](https://kreative-knowmad.itch.io/) 

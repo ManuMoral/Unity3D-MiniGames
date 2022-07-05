@@ -8,6 +8,9 @@ TagManager:
   - Floor
   - DoubleTori
   - Destructible
+  - LiveDuck
+  - SuperDuck
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -15,9 +18,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - LivingWorld
+  - DeadsWorld
+  - IgnoreInMiniMap
   - 
   - 
   - 

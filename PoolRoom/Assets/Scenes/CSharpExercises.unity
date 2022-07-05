@@ -167,11 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ad2bc81a8755746b54fda77b7ae2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _task: 7
-  _num1: 3
-  _num2: 4
+  _task: 4
+  _num1: 2
+  _num2: 1
   _word: Jump
   _sentence: This sentence is an example
+  _untidyNumbers: 
 --- !u!1 &1732693605
 GameObject:
   m_ObjectHideFlags: 0
