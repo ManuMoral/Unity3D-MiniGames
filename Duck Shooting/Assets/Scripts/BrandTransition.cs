@@ -15,18 +15,12 @@ namespace Unity3DMiniGames
         {
             Cursor.visible = false;
             _brandVideo[0].SetActive(true);
-            Invoke(nameof(PlaySecondBrand), _delayToPlaySecondBrand);
-        }
-
-        void PlaySecondBrand()
-        {
-            _brandVideo[0].SetActive(false);
-            _brandVideo[1].SetActive(true);
             Invoke(nameof(LoadMainMenuScene), _delayToMainMenu);
         }
 
         void LoadMainMenuScene()
         {
+            _brandVideo[0].SetActive(false);
             SceneManager.LoadScene(1);
         }
     }

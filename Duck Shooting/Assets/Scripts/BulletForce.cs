@@ -8,17 +8,17 @@ namespace Unity3DMiniGames
 {
     public class BulletForce : MonoBehaviour
     {
+        [SerializeField] ParticleSystem _waterDrops;
 
         void Start()
         {
-            //TODO Particles?
-            Destroy(gameObject, 3f);
+            Destroy(gameObject, .5f);
         }
 
         private void OnCollisionEnter(Collision col)
         {
-            //TODO Particles?
-            Destroy(gameObject, .2f);
+            _waterDrops.Play();
+            Destroy(gameObject, .25f);
         }
     }
 }

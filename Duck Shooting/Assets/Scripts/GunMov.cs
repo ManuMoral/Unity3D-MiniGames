@@ -7,12 +7,11 @@ namespace Unity3DMiniGames
 {
     public class GunMov : MonoBehaviour
     {
-        [SerializeField] float _gunSpeed, _maxDistance, _bulletSpeed;
+        [SerializeField] float _gunSpeed, _maxDistance, _bulletSpeed, _bonusRechSpeed;
         [SerializeField] Bullet _bullet;
         [SerializeField] Rigidbody _waterBullet;
-        [SerializeField] Transform _gunPivot, _bulletTarget, _gunPos;
-        private float mouseX;
-        private float mouseY;
+        [SerializeField] Transform _gunPivot, _bulletTarget, _gunPos, _startGunPivot;
+        private float mouseX, mouseY, rechargeSpeed;
         private readonly float sensitivity = 1;
         Vector3 bulletDir;
         AudioSource _shootSound;
@@ -21,6 +20,12 @@ namespace Unity3DMiniGames
         private void Awake()
         {
             _shootSound = GetComponent<AudioSource>();
+            rechargeSpeed = 1f;
+        }
+
+        private void Start()
+        {
+            BalloonEvent.SetBonus += SetRechargeSpeedBonus;
         }
 
         void Update()
@@ -36,10 +41,12 @@ namespace Unity3DMiniGames
                 isShooting = true;
                 GetBulletDir();
                 Rigidbody projectileInstance;
-                projectileInstance = Instantiate(_waterBullet, bulletDir, _gunPivot.rotation) as Rigidbody;
+                projectileInstance = Instantiate(_waterBullet, bulletDir, _gunPivot.rotation);
                 projectileInstance.AddForce(_gunPivot.forward * _bulletSpeed, ForceMode.Impulse);
-                _shootSound.Play();
-                Invoke(nameof(Recharge), 1f);
+                if(!GameManager.Instance.m_isSoundOff) _shootSound.Play();
+                Invoke(nameof(Recharge), rechargeSpeed);
+                _startGunPivot.localPosition = new Vector3(0,.1f,-.1f);
+                Invoke(nameof(BackwardMov), .1f);
             }
         }
 
@@ -49,9 +56,26 @@ namespace Unity3DMiniGames
                 _bulletTarget.position, _maxDistance);
         }
 
+        void SetRechargeSpeedBonus(int id)
+        {
+            if (id == 0 && !GameManager.Instance.m_speedShootBonusOn)
+            {
+                rechargeSpeed = _bonusRechSpeed;
+            }
+        }
+
         void Recharge()
         {
             isShooting = !isShooting;
+            if (!GameManager.Instance.m_speedShootBonusOn)
+            {
+                rechargeSpeed = 1f;
+            }
+        }
+
+        void BackwardMov()
+        {
+            _startGunPivot.localPosition = new Vector3(0, 0f, 0f);
         }
 
         void ViewRotations()
@@ -93,6 +117,12 @@ namespace Unity3DMiniGames
                 _gunPivot.transform.localEulerAngles = new Vector3(Mathf.Clamp(-mouseY, -25, -1), Mathf.Clamp(mouseX, -37, 37), 0);
             }
 
+        }
+
+        public bool IsRecharged()
+        {
+            if (isShooting) return false;
+            else return true;
         }
     }
 }

@@ -6,26 +6,31 @@ TagManager:
   tags:
   - Bullet
   - Floor
+  - Platform
+  - DiagonalPlatform
+  - HorizonDetector
+  - DracuDuck
+  - Reed
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Platform
   - Water
   - UI
   - Duck
   - Cloud
   - Bullet
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - DiagonalPlatform
+  - HorizontDetector
+  - DracuDuck
+  - LeftDracuDuck
+  - RightDracuDuck
+  - LeftDiagonalPlatform
+  - RightDiagonalPlatform
+  - Stone
+  - Ballon
+  - Reeds
   - 
   - 
   - 

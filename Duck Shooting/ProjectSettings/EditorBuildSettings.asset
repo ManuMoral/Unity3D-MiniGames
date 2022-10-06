@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Logos.unity
+    path: Assets/_Scenes/Logos.unity
     guid: 4bd03db9d0244f249baf05e4d9366be6
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/_Scenes/MainMenu.unity
     guid: b4d965938e543e5409ff9f7e650381b9
   - enabled: 1
-    path: Assets/Scenes/DuckShooting.unity
+    path: Assets/_Scenes/GamePlay.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/_Scenes/GameOver.unity
     guid: dd3407dbded284f4fb8005c63597925d
   m_configObjects: {}

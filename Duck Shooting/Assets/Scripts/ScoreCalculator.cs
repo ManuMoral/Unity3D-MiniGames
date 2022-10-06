@@ -8,32 +8,40 @@ namespace Unity3DMiniGames
 {
     public class ScoreCalculator : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI _ducksKilledText;
-        
-        int m_currentScore;
+        [SerializeField] TextMeshProUGUI _ducksKilledText, _totalBonusPoints;
+        [SerializeField] int _duckPoints;
+        int currentScore, bonusDuckPoints;
         public int m_diffState;
 
         private void Start()
         {
             m_diffState = 0;
+            bonusDuckPoints = 0;
+            UpdateScore();
+            BalloonEvent.SetBonus += ApplyBonusPoints;
         }
 
         private void Update()
         {
+            DifficultySeter();
+        }
+
+        private void DifficultySeter()
+        {
             //Difficulty levels:
-            if (m_currentScore > 10 && m_currentScore <= 20)
+            if (currentScore > 10 && currentScore <= 50)
             {
                 m_diffState = 1;
             }
-            else if(m_currentScore > 21 && m_currentScore <= 30)
+            else if (currentScore > 51 && currentScore <= 100)
             {
                 m_diffState = 2;
             }
-            else if (m_currentScore > 31 && m_currentScore <= 50)
+            else if (currentScore > 101 && currentScore <= 500)
             {
                 m_diffState = 3;
             }
-            else if (m_currentScore > 51)
+            else if (currentScore > 501)
             {
                 m_diffState = 4;
             }
@@ -41,32 +49,53 @@ namespace Unity3DMiniGames
             {
                 m_diffState = 0;
             }
-
         }
 
-        public void KillDuck() 
-        {
-            m_currentScore += 1;
+        public void KillDuck()
+        { 
+            currentScore += CurrentsPointsByKill();
+            GameManager.Instance.m_maxPxDuck = CurrentsPointsByKill();
             UpdateScore();
+        }
+
+        public int CurrentsPointsByKill()
+        {
+            return _duckPoints + bonusDuckPoints;
         }
 
         public void KillVampiDuck()
         {
-            m_currentScore -= 5;
-            if (m_currentScore <= 0) m_currentScore = 0;
+            if (currentScore > 1) currentScore -= DrainPointsByKill();
+            else if (currentScore == 1) currentScore = 0;
+            else if (currentScore <= 0) currentScore = 0;
+            
             UpdateScore();
         }
 
-        public void KillSuperDuck()
+        public int DrainPointsByKill()
         {
-            m_currentScore += 5;
-            UpdateScore();
+            return Mathf.RoundToInt(currentScore * 50 / 100);
         }
 
         void UpdateScore()
         {
-            _ducksKilledText.text = m_currentScore.ToString();
-            GameManager.Instance.m_newScore = m_currentScore;
+            _ducksKilledText.text = currentScore.ToString() + " p";
+            GameManager.Instance.m_newScore = currentScore;
+        }
+
+        void ApplyBonusPoints(int id)
+        {
+            if (id == 2)
+            {
+                bonusDuckPoints += 2;
+                _totalBonusPoints.text = CurrentsPointsByKill().ToString();
+                GameManager.Instance.m_maxPxDuck = CurrentsPointsByKill();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            BalloonEvent.SetBonus -= ApplyBonusPoints;
         }
     }
 }

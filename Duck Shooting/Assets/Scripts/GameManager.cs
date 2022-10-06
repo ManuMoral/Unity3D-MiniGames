@@ -1,21 +1,20 @@
 //Practice 3: Duck Shooting
 //Editor: Manu Moral
 
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Unity3DMiniGames
 {
     public class GameManager : MonoBehaviour
     {
-        public int m_newScore;
-        public bool m_playPause;
+        public int m_newScore, m_maxPxDuck, m_maxTimeEarn, m_totalRD, m_totalSD, m_totalVD, m_totalDD;
+        public bool m_playPause, m_speedShootBonusOn, m_isGameOver, m_isSoundOff, m_isFirstTrans;
+        [SerializeField] float _timeToTurnOnTheScene;
 
         //Singleton structure:
         private static GameManager instance;
         public static GameManager Instance { get { return instance; } }
-
-        AudioSource _cursorCuack;
 
         private void Awake()
         {
@@ -25,40 +24,31 @@ namespace Unity3DMiniGames
             DontDestroyOnLoad(this);
 
             m_playPause = false;
-            _cursorCuack = GetComponent<AudioSource>();
+            m_isSoundOff = false;
+            m_isFirstTrans = true;
         }
 
-        private void Update()
+        public static void ResetScores()
         {
-            CursorProp();
+            Instance.m_newScore = 0;
+            Instance.m_maxPxDuck = 1;
+            Instance.m_maxTimeEarn = 0;
+            Instance.m_totalRD = 0;
+            Instance.m_totalSD = 0;
+            Instance.m_totalVD = 0;
+            Instance.m_totalDD = 0;
         }
 
-        private void CursorProp()
-        {
-
-            if (SceneManager.GetActiveScene().buildIndex == 2)
-            {
-                Cursor.visible = false;               
-            }
-            else
-            {
-                Cursor.visible = true;
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    _cursorCuack.Play();
-                }
-            }
-        }
-
-        public void PauseGame()
+        public static void PauseGame()
         {
             Time.timeScale = 0;
+            Instance.m_playPause = true;
         }
 
-        public void ResumeGame()
+        public static void ResumeGame()
         {
             Time.timeScale = 1;
+            Instance.m_playPause = false;
         }
 
         public void ExitGame()
@@ -66,20 +56,16 @@ namespace Unity3DMiniGames
             Application.Quit();
         }
 
-        public void LoadMainMenuScene()
+        public void TurnOnTheScene()
         {
-            SceneManager.LoadScene(1);
+            Invoke(nameof(UnPauseScene), _timeToTurnOnTheScene);
         }
 
-        public void LoadGamePlayScene()
+        void UnPauseScene()
         {
-            SceneManager.LoadScene(2);
+            Instance.m_playPause = false;
         }
 
-        public void LoadEndGameScene()
-        {
-            SceneManager.LoadScene(3);
-        }
     }
 }
 
