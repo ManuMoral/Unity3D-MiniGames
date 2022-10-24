@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Floor
+  - Ramp
+  - RoadUnitSP
+  - Abyss
+  - Gum
+  - Stone
+  - Balloon
+  - Plasticine
+  - Gum_PU
+  - Stone_PU
+  - Balloon_PU
+  - Plasticine_PU
+  - Obstacle
+  - Hard_Obstacle
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ball
+  - Water
+  - UI
+  - PowerUp
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3631104533
+    locked: 0
